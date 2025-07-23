@@ -1,35 +1,22 @@
-import React from "react";
+import { AssistantRuntimeProvider } from "@assistant-ui/react";
+import { useChatRuntime } from "@assistant-ui/react-ai-sdk";
+import { ThreadList } from "../components/assistant-ui/thread-list";
+import { Thread } from "../components/assistant-ui/thread";
+import { TooltipProvider } from "../components/ui/tooltip";
 
-// 定义 Chat 组件的 Props 类型
-export interface ChatProps {
-  /** 聊天标题 */
-  title?: string;
-  /** 是否显示 */
-  visible?: boolean;
-  /** 自定义类名 */
-  className?: string;
-  /** 自定义样式 */
-  style?: React.CSSProperties;
-  /** 点击事件 */
-  onClick?: () => void;
-}
-
-// Chat 组件
-export const Chat: React.FC<ChatProps> = ({
-  title = "Chat",
-  visible = true,
-  className,
-  style,
-  onClick,
-}) => {
-  if (!visible) return null;
+export const Chat = () => {
+  const runtime = useChatRuntime({
+    api: "/api/chat",
+  });
 
   return (
-    <div className={className} style={style} onClick={onClick}>
-      {title}: I am a chat
-    </div>
+    <TooltipProvider>
+      <AssistantRuntimeProvider runtime={runtime}>
+        <div className="grid h-[600px] grid-cols-[200px_1fr] gap-x-2 px-4 py-4">
+          <ThreadList />
+          <Thread />
+        </div>
+      </AssistantRuntimeProvider>
+    </TooltipProvider>
   );
 };
-
-// 设置显示名称，便于调试
-Chat.displayName = "Chat";
