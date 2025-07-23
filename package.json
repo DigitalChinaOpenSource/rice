@@ -1,0 +1,30 @@
+{
+  "name": "rice",
+  "version": "1.0.0",
+  "description": "Rice AI component library - Monorepo for AI web application components",
+  "main": "index.js",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "start": "turbo run start",
+    "clean": "turbo run clean",
+    "demo": "pnpm --filter @rice/demo dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "vue",
+    "components",
+    "ai",
+    "chat",
+    "ui",
+    "monorepo"
+  ],
+  "author": "fancn21th <fancn21th@aliyun.com> (http://fancn21th.cn/)",
+  "license": "MIT",
+  "packageManager": "pnpm@10.13.1",
+  "devDependencies": {
+    "turbo": "2.5.5"
+  }
+}
